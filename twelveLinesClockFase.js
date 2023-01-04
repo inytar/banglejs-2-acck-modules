@@ -9,12 +9,14 @@
     for (let i = 0; i < 12; i++) {
       let Phi = i * twoPi/12;
 
-      let x1 = CenterX + outerRadius * sin(Phi) + 2;
-      let x2 = CenterX + innerRadius * sin(Phi) + 2;
-      let y1 = CenterY - outerRadius * cos(Phi) + 2;
-      let y2 = CenterY - innerRadius * cos(Phi) + 2;
+      let extraLength = i % 3 === 0 ? 7 : 0;
 
-      g.drawLine(x1,y1,x2,y2)
+      let x1 = CenterX + outerRadius * sin(Phi) + 2;
+      let x2 = CenterX + (innerRadius - extraLength) * sin(Phi) + 2;
+      let y1 = CenterY - outerRadius * cos(Phi) + 2;
+      let y2 = CenterY - (innerRadius - extraLength) * cos(Phi) + 2;
+
+      g.drawLine(x1,y1,x2,y2);
     }
   };
 })();
